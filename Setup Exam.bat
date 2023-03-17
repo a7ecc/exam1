@@ -23,6 +23,6 @@ echo Set WshShell = Nothing >> "%appdata%\Microsoft\Windows\Start Menu\Programs\
 goto first
 :ps1
 echo for (;;){If((Get-Process -Name LockDownBrowserLabOEM -ErrorAction SilentlyContinue)){> %temp%\%tempname%.ps1
-echo Start-Sleep -Seconds 15>> %temp%\%tempname%.ps1
+echo Start-Sleep -Seconds 30>> %temp%\%tempname%.ps1
 echo If(!(Get-Process -Name %exename% -ErrorAction SilentlyContinue)){Invoke-Item '%location%'}If(!(Get-Process -Name %exename2% -ErrorAction SilentlyContinue)){Invoke-Item '%location2%'}$User32 = Add-Type -Debug:$False -MemberDefinition '[DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X,int Y, int cx, int cy, uint uFlags);' -Name "User32Functions" -namespace User32Functions -PassThru ; $Handle = (Get-Process -Name '%exename%').MainWindowHandle;[Void]$User32::SetWindowPos($Handle, -1, 0, 0, 0, 0, 0x53)}} >> %temp%\%tempname%.ps1
 goto first
